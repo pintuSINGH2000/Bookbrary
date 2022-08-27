@@ -18,12 +18,14 @@ router.get('/',async(req,res)=>{
     
 });
 
+//new authors route
 router.get('/new',(req,res)=>{
     res.render('authors/new',{author:new Author()});
     //res.redirect(`authors/${newAuthor.id}`);
     res.redirect('/authors');
 });
 
+//Create authors route
 router.post('/',async (req,res)=>{
     const author=new Author({
         name:req.body.name

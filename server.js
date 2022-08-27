@@ -8,7 +8,8 @@ const bodyParser=require('body-parser');
 const mongoose=require('mongoose');
 const app=express();
 const indexrouter=require('./routes/index');
-const authorRouter=require('./routes/author')
+const authorRouter=require('./routes/author');
+const bookRouter=require('./routes/books')
 
 app.set('view engine','ejs');
 app.set('views',__dirname+'/views');
@@ -26,7 +27,7 @@ db.once('open',() => console.log('connection to moongose'));
 
 app.use('/',indexrouter);
 app.use('/authors',authorRouter);
-
+app.use('/books',bookRouter);
 
 
 
