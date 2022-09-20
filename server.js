@@ -31,8 +31,6 @@ app.use('/',indexrouter);
 app.use('/authors',authorRouter);
 app.use('/books',bookRouter);
 
-
-
 app.listen(process.env.PORT || 3000,(req,res)=>{
     console.log("server is running");
 });

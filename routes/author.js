@@ -22,8 +22,6 @@ router.get('/',async(req,res)=>{
 //new authors route
 router.get('/new',(req,res)=>{
     res.render('authors/new',{author:new Author()});
-    //res.redirect(`authors/${newAuthor.id}`);
-    res.redirect('/authors');
 });
 
 //Create authors route
@@ -38,12 +36,11 @@ router.post('/',async (req,res)=>{
     }catch{
         res.render('authors/new',{
                     author:author,
-                    errorMessage:"error Createing Author"
+                    errorMessage:"Error Creating Author"
         });
     }
 })
 router.get('/:id',async (req,res) => {
-    
   try{
     const author=await Author.findById(req.params.id);
     const books=await Book.find({author :author.id}).limit(6).exec();
@@ -55,6 +52,7 @@ router.get('/:id',async (req,res) => {
     res.redirect('/')
   }
 });
+
 router.get('/:id/edit',async (req,res) => {
    try{
     const author=await Author.findById(req.params.id);
@@ -76,7 +74,7 @@ router.put('/:id',async (req,res) =>{
         }else{
         res.render('authors/edit',{
                     author:author,
-                    errorMessage:"error Updating Author"
+                    errorMessage:"Error Updating Author"
         });
     }
     }
